@@ -1,9 +1,38 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>registro</ion-title>
+    <ion-title>Registro</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-label  position="stacked" type="name">Nome: </ion-label>
+      <ion-input placeholder="insira seu nome"></ion-input>
+    </ion-item>
 
+    <ion-item>
+      <ion-label  position="stacked" type="string">CPF: </ion-label>
+      <ion-input placeholder="XXX-XXX-XXX-XX"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label  position="stacked" type="email">Email: </ion-label>
+      <ion-input placeholder="insira seu email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label  position="stacked">Senha: </ion-label>
+      <ion-input placeholder="insira sua senha" type="password"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label  position="stacked">Confirmar senha: </ion-label>
+      <ion-input placeholder="confirme sua senha" type="password"></ion-input>
+    </ion-item>
+  </ion-list>
+  <div class="center">
+    <ion-button color="success">salvar</ion-button>
+    <ion-button color="danger" routerLink="/tabs/tab1">Voltar</ion-button>
+  </div>
 </ion-content>
