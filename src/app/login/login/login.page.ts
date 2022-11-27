@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -9,8 +9,20 @@ import { FormBuilder } from '@angular/forms';
 export class LoginPage implements OnInit {
 
   formLogin = this.formBuilder.group({
-    email: ['']
+    email: ['', Validators.compose([Validators.required, Validators.email])],
+    senha:['', Validators.compose([Validators.required, Validators.minLength(3)])]
   });
+
+  mensagensValidacao={
+    email: [
+      {tipo:'required', mensagem:'o campo é obrigatório'},
+      {tipo:'email', mensagem:'email inválido'}
+    ],
+    senha:[
+      {tipo:'required',mensagem:'campo obrigatório'},
+      {tipo:'minlength',mensagem:'o campo deve conter no mínino 3 caracteres'}
+    ]
+  };
 
   constructor(private formBuilder: FormBuilder) { }
 

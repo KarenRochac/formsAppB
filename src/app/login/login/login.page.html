@@ -5,25 +5,42 @@
 </ion-header>
 
 <ion-content>
+  <form [formGroup]="formLogin">
   <ion-item fill="solid">
     <ion-label position="floating">Email</ion-label>
-    <ion-input type="email"></ion-input>
-    <ion-note slot="helper">Coloque um email válido</ion-note>
-    <ion-note slot="error">Invalid email</ion-note>
+    <ion-input type="email" formControlName="email"></ion-input>
+    <ng-container *ngFor="let erro of mensagensValidacao.email">
+      <span
+        *ngIf="formLogin.get('email').hasError(erro.tipo) && (formLogin.get('email').dirty || formLogin.get('email').touched )"
+        class="msg-erro"
+      >
+        {{erro.mensagem}}
+      </span>
+    </ng-container>
+
+
   </ion-item>
 
   <ion-item fill="solid">
   <ion-label position="floating">Senha</ion-label>
-    <ion-input type="email"></ion-input>
-    <ion-note slot="helper">Coloque uma senha válida</ion-note>
-    <ion-note slot="error">Invalid email</ion-note>
+    <ion-input formControlName="senha" type="password"></ion-input>
+    <ng-container *ngFor="let erro of mensagensValidacao.senha">
+      <span
+      *ngIf="formLogin.get('senha').hasError(erro.tipo) && (formLogin.get('senha').dirty || formLogin.get('senha').touched )"
+      class="msg-erro"
+      >
+        {{erro.mensagem}}
+      </span>
+    </ng-container>
   </ion-item>
 
   <div class="center">
     <ion-button shape="round" color="success"   size="default" routerLink="/tabs/tab1">entrar</ion-button>
-    <ion-button  shape="round" color="secondary" size="default">esqueceu a senha</ion-button>
+    <ion-button  shape="round" color="secondary" size="default" routerLink="">esqueceu a senha</ion-button>
     <ion-button shape="round" color="tertiary"  size="default" routerLink="/registro">registrar</ion-button>
+    <ion-button  shape="round" color="danger"  size="default" routerLink="/produto">produto</ion-button>
     <ion-button  shape="round" color="light"  size="default" routerLink="/tabs/tab1">voltar</ion-button>
 
   </div>
+</form>
 </ion-content>
