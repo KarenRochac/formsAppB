@@ -4,11 +4,11 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="fundo" >
   <form [formGroup]="formProduto">
   <ion-list>
     <ion-item>
-      <ion-label>Nome</ion-label>
+      <ion-label>Nome:</ion-label>
       <ion-input formControlName="nome" type="text" placeholder="digite o nome"></ion-input>
       <ng-container *ngFor="let erro of mensagensValidacao.nome">
         <span
@@ -21,7 +21,7 @@
     </ion-item>
 
     <ion-item>
-      <ion-label>Descrição </ion-label>
+      <ion-label>Descrição: </ion-label>
       <ion-input formControlName="descricao" type="text" placeholder="digite a descrição"></ion-input>
       <ng-container *ngFor="let erro of mensagensValidacao.descricao">
         <span
@@ -34,7 +34,7 @@
     </ion-item>
 
     <ion-item>
-      <ion-label> Data Validade</ion-label>
+      <ion-label> Data Validade:</ion-label>
       <ion-input type="date" formControlName="dataValidade" placeholder="Selecione uma data"></ion-input>
       <ng-container *ngFor="let erro of mensagensValidacao.dataValidade">
         <span
@@ -47,7 +47,7 @@
     </ion-item>
 
     <ion-item>
-      <ion-label>Preço </ion-label>
+      <ion-label>Preço: </ion-label>
       <ion-input type="number" formControlName="preco" placeholder="Digte o Preço"></ion-input>
       <ng-container *ngFor="let erro of mensagensValidacao.preco">
         <span
