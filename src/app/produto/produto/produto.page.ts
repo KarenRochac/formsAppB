@@ -17,11 +17,11 @@ export class ProdutoPage implements OnInit {
 
   mensagensValidacao={
     nome: [
-      {tipo:'required', mensagem:'o campo é obrigatório'},
+      {tipo:'required', mensagem:' campo é obrigatório'},
     ],
     descricao:[
       {tipo:'required',mensagem:'campo obrigatório'},
-      {tipo:'minlength',mensagem:'o campo deve conter no mínino 3 caracteres'}
+      {tipo:'minlength',mensagem:' campo deve conter no mínino 3 caracteres'}
     ],
     preco:[
       {tipo:'required', mensagem:'campo obrigatório'}
