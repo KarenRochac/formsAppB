@@ -1,5 +1,8 @@
+import { StorageService } from './../../services/storage.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Produto } from 'src/app/models/Produto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-produto',
@@ -7,13 +10,9 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./produto.page.scss'],
 })
 export class ProdutoPage implements OnInit {
+formProduto: FormGroup;
 
-  formProduto = this.formBuilder.group({
-    nome: ['', Validators.compose([Validators.required])],
-    descricao:['', Validators.compose([Validators.required, Validators.minLength(3)])],
-    preco:['',Validators.required],
-    dataValidade:['',Validators.required]
-  });
+produto: Produto = new Produto();
 
   mensagensValidacao={
     nome: [
@@ -30,9 +29,29 @@ export class ProdutoPage implements OnInit {
       {tipo:'required', mensagem:'campo obrigatório'}
     ]
   };
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private storageService: StorageService, private router: Router) {
+    this.formProduto = this.formBuilder.group({
+      nome: ['', Validators.compose([Validators.required])],
+      descricao:['', Validators.compose([Validators.required, Validators.minLength(3)])],
+      preco:['',Validators.required],
+      dataValidade:['',Validators.required]
+    });
+   }
 
   ngOnInit() {
+  }
+
+  async salvarProduto(){
+    if(this.formProduto.valid){
+      this.produto.nome = this.formProduto.value.nome;
+      this.produto.descricao = this.formProduto.value.descricao;
+      this.produto.dataValidade = this.formProduto.value.dataValidade;
+      this.produto.preco = this.formProduto.value.preco;
+      await this.storageService.set(this.produto.nome, this.produto);
+      this.router.navigateByUrl('/tabs/tab1');
+    }else{
+      alert('formulário Inválido');
+    }
   }
 
 }

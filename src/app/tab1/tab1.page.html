@@ -1,11 +1,50 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Perfil usuário!
+      Lista Produtos!
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-<h1>Bem vindo a Página !!!</h1>
+  <ion-item-sliding *ngFor="let prod of listaProdutos" >
+
+    <ion-item>
+      <ion-label >
+        <div>
+          <ion-card color="light">
+            <ion-card-header>
+              <ion-card-title>{{prod.nome}}</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+              <ion-list>
+                <ion-item>
+                  <ion-label ><b>Descrição:</b>   {{prod.descricao}}</ion-label>
+                </ion-item>
+              </ion-list>
+              <ion-list>
+                <ion-item>
+                  <ion-label ><b>Validade:</b>  {{prod.dataValidade}}</ion-label>
+                </ion-item>
+              </ion-list>
+              <ion-list>
+                <ion-item>
+                  <ion-label><b>R$:</b> {{prod.preco}}</ion-label>
+                </ion-item>
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </ion-label>
+    </ion-item>
+
+    <ion-item-options side="end">
+      <ion-item-option color="danger" (click)="excluirProduto(prod.nome)">
+        <ion-icon slot="icon-only" name="trash"></ion-icon>
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+
+  <ion-button  shape="round" color="danger"  size="default" routerLink="/produto"> Cadastar produto</ion-button>
 </ion-content>
