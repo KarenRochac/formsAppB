@@ -1,10 +1,27 @@
-.msg-erro{
-    color:#ff0000;
-    font-size: 15px;
-    clear:both;
-    position: relative;
-  }
+.msg-erro {
+  color: #ff0000;
+  font-size: 15px;
+  clear: both;
+  position: relative;
+}
 
-  .fundo{
-    color: antiquewhite;
+.fundo {
+  color: antiquewhite;
+}
+
+.form {
+  margin: 20px;
+}
+
+ion-list {
+   border-radius: 15px;
+  ion-item {
   }
+}
+
+.btnlist{
+  margin: 12px;
+  ion-button{
+    margin: 8px 4px;
+  }
+}

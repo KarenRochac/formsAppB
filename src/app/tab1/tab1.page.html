@@ -6,7 +6,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" class="ion-text-center">
   <ion-item-sliding *ngFor="let prod of listaProdutos" >
 
     <ion-item>
@@ -46,5 +46,5 @@
     </ion-item-options>
   </ion-item-sliding>
 
-  <ion-button  shape="round" color="danger"  size="default" routerLink="/produto"> Cadastar produto</ion-button>
+  <ion-button class="btncad"  shape="round" color="danger"  size="default" routerLink="/produto" > Cadastar produto</ion-button>
 </ion-content>

@@ -4,64 +4,84 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="fundo" >
-  <form [formGroup]="formProduto">
-  <ion-list>
-    <ion-item>
-      <ion-label>Nome:</ion-label>
-      <ion-input formControlName="nome" type="text" placeholder="digite o nome"></ion-input>
-      <ng-container *ngFor="let erro of mensagensValidacao.nome">
-        <span
-        *ngIf="formProduto.get('nome').hasError(erro.tipo) && (formProduto.get('nome').dirty || formProduto.get('nome').touched )"
-        class="msg-erro"
-        >
-          {{erro.mensagem}}
-        </span>
-      </ng-container>
-    </ion-item>
+<ion-content class="fundo">
+  <form class="form" [formGroup]="formProduto">
+    <ion-list>
+      <ion-item>
+        <ion-label>Nome:</ion-label>
+        <ion-input
+          formControlName="nome"
+          type="text"
+          placeholder="digite o nome"
+        ></ion-input>
+        <ng-container *ngFor="let erro of mensagensValidacao.nome">
+          <span
+            *ngIf="formProduto.get('nome').hasError(erro.tipo) && (formProduto.get('nome').dirty || formProduto.get('nome').touched )"
+            class="msg-erro"
+          >
+            {{erro.mensagem}}
+          </span>
+        </ng-container>
+      </ion-item>
 
-    <ion-item>
-      <ion-label>Descrição: </ion-label>
-      <ion-input formControlName="descricao" type="text" placeholder="digite a descrição"></ion-input>
-      <ng-container *ngFor="let erro of mensagensValidacao.descricao">
-        <span
-        *ngIf="formProduto.get('descricao').hasError(erro.tipo) && (formProduto.get('descricao').dirty || formProduto.get('descricao').touched )"
-        class="msg-erro"
-        >
-          {{erro.mensagem}}
-        </span>
-      </ng-container>
-    </ion-item>
+      <ion-item>
+        <ion-label>Descrição: </ion-label>
+        <ion-input
+          formControlName="descricao"
+          type="text"
+          placeholder="digite a descrição"
+        ></ion-input>
+        <ng-container *ngFor="let erro of mensagensValidacao.descricao">
+          <span
+            *ngIf="formProduto.get('descricao').hasError(erro.tipo) && (formProduto.get('descricao').dirty || formProduto.get('descricao').touched )"
+            class="msg-erro"
+          >
+            {{erro.mensagem}}
+          </span>
+        </ng-container>
+      </ion-item>
 
-    <ion-item>
-      <ion-label> Data Validade:</ion-label>
-      <ion-input type="date" formControlName="dataValidade" placeholder="Selecione uma data"></ion-input>
-      <ng-container *ngFor="let erro of mensagensValidacao.dataValidade">
-        <span
-        *ngIf="formProduto.get('dataValidade').hasError(erro.tipo) && (formProduto.get('dataValidade').dirty || formProduto.get('dataValidade').touched )"
-        class="msg-erro"
-        >
-          {{erro.mensagem}}
-        </span>
-      </ng-container>
-    </ion-item>
+      <ion-item>
+        <ion-label> Data Validade:</ion-label>
+        <ion-input
+          type="date"
+          formControlName="dataValidade"
+          placeholder="Selecione uma data"
+        ></ion-input>
+        <ng-container *ngFor="let erro of mensagensValidacao.dataValidade">
+          <span
+            *ngIf="formProduto.get('dataValidade').hasError(erro.tipo) && (formProduto.get('dataValidade').dirty || formProduto.get('dataValidade').touched )"
+            class="msg-erro"
+          >
+            {{erro.mensagem}}
+          </span>
+        </ng-container>
+      </ion-item>
 
-    <ion-item>
-      <ion-label>Preço: </ion-label>
-      <ion-input type="number" formControlName="preco" placeholder="Digte o Preço"></ion-input>
-      <ng-container *ngFor="let erro of mensagensValidacao.preco">
-        <span
-        *ngIf="formProduto.get('preco').hasError(erro.tipo) && (formProduto.get('preco').dirty || formProduto.get('preco').touched )"
-        class="msg-erro"
-        >
-          {{erro.mensagem}}
-        </span>
-      </ng-container>
-    </ion-item>
-  </ion-list>
-</form>
-
-  <ion-button color="medium" shape="round" (click)="salvarProduto()">Salvar</ion-button>
-  <ion-button color="warning" shape="round" routerLink="/login">Voltar</ion-button>
-
+      <ion-item>
+        <ion-label>Preço: </ion-label>
+        <ion-input
+          type="number"
+          formControlName="preco"
+          placeholder="Digte o Preço"
+        ></ion-input>
+        <ng-container *ngFor="let erro of mensagensValidacao.preco">
+          <span
+            *ngIf="formProduto.get('preco').hasError(erro.tipo) && (formProduto.get('preco').dirty || formProduto.get('preco').touched )"
+            class="msg-erro"
+          >
+            {{erro.mensagem}}
+          </span>
+        </ng-container>
+      </ion-item>
+    </ion-list>
+  </form>
+  <div class="btnlist">
+    <ion-button color="tertiary" expand="full" shape="round" (click)="salvarProduto()"
+      >Salvar</ion-button
+    >
+    <ion-button color="tertiary" expand="full" shape="round" routerLink="/login"
+      >Voltar</ion-button
+    >
+  </div>
 </ion-content>
